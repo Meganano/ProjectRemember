@@ -5,13 +5,6 @@ from time import sleep
 class McuWithPeriBoard(McuBoard):
 
     ################################
-    def setLed(self, led_no, led_val):
-        '''
-        Set status of LED led_no on peripheral board to led_val
-        '''
-        self.usb_write(request=0,index=led_no,value=led_val)
-
-    ################################
     def setLedValue(self, value):
         '''
         Display value's 3 LSBs on peripheral board's LEDs
@@ -43,8 +36,3 @@ class McuWithPeriBoard(McuBoard):
         result = self.usb_read(request=4,length=1)
         return result[0]==64
 
-    ################################
-'''    def getLight(self):
-        result = self.usb_read(request=3,length=2)
-#        print(result)
-        return (result[1]*256) + result[0]'''

@@ -29,14 +29,6 @@ void init_peripheral()
 }
 
 
-void set_led(uint8_t pin,uint8_t state)
-{
-	if (state)
-		PORTC |= (1 << pin);
-	else
-		PORTC &= ~(1 << pin);
-}
-
 void set_led_value(uint8_t value)
 {
 	PORTC &= ~(0b00001111);

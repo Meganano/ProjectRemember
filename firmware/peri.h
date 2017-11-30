@@ -9,9 +9,5 @@
 #define GREEN  PC2
 #define BLUE   PC3
 
-#define ON     1
-#define OFF    0
-
 void init_peripheral();
-void set_led(uint8_t,uint8_t);
 void set_led_value(uint8_t);
