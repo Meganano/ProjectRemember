@@ -41,7 +41,6 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
     {
 	switch_state = IS_SWITCH_RED_PRESSED();
 	usbMsgPtr = &switch_state;
-	//_delay_ms(10);
 	return 1;
     }
 	
@@ -49,7 +48,6 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
     {
 	switch_state = IS_SWITCH_YELLOW_PRESSED();
 	usbMsgPtr = &switch_state;
-	//_delay_ms(10);
 	return 1;
     }
 
@@ -58,7 +56,6 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
     {
 	switch_state = IS_SWITCH_GREEN_PRESSED();
 	usbMsgPtr = &switch_state;
-	//_delay_ms(10);
 	return 1;
     }
 	
@@ -66,7 +63,6 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
     {
 	switch_state = IS_SWITCH_BLUE_PRESSED();
 	usbMsgPtr = &switch_state;
-	//_delay_ms(10);
 	return 1;
 		
     }
@@ -94,6 +90,7 @@ int main(void)
     for(;;)
     {
         usbPoll();
+
     }
 
     return 0;

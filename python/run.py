@@ -2,16 +2,14 @@ from practicum import find_mcu_boards
 from peri import McuWithPeriBoard
 from time import sleep
 import random
+import os
 
 class bcolors:
-    HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
 
 def checkOrder(arrayColor,arraySwitch,count):
     result = False
@@ -39,7 +37,8 @@ arrayColor = []
 arrayColor.append(numled)
 count = 0
 
-print ("START : Switch Ver.")
+os.system('clear')
+print ("START : Press the button in color sequence")
 
 while (1):
     press = -1
@@ -53,22 +52,22 @@ while (1):
             arraySwitch.append(1)
             press +=1
             print ("-----------"+str(press+1)+"-----------")
-            print (bcolors.FAIL+"----------RED----------"+bcolors.ENDC)
+            print (bcolors.FAIL+"          RED"+bcolors.ENDC)
         elif swY is True:
             arraySwitch.append(2)
             press +=1
             print ("-----------"+str(press+1)+"-----------")
-            print (bcolors.WARNING+"----------YEL----------"+bcolors.ENDC)
+            print (bcolors.WARNING+"          YEL"+bcolors.ENDC)
         elif swG is True:
             arraySwitch.append(4)
             press +=1
             print ("-----------"+str(press+1)+"-----------")
-            print (bcolors.OKGREEN+"----------GRN----------"+bcolors.ENDC)
+            print (bcolors.OKGREEN+"          GRN"+bcolors.ENDC)
         elif swB is True:
             arraySwitch.append(8)
             press +=1
             print ("-----------"+str(press+1)+"-----------")
-            print (bcolors.OKBLUE+"----------BLU----------"+bcolors.ENDC)
+            print (bcolors.OKBLUE+"          BLU"+bcolors.ENDC)
         sleep(0.2) 
 
     if (press == count):
@@ -77,9 +76,18 @@ while (1):
             numled = random.choice(ledcolor)
             b.setLedValue(numled)
             arrayColor.append(numled)
+            os.system('clear')
             print ("Level"+(str(count+1)))
         else:
-            print ("GameOver")
-            break
+            print (bcolors.FAIL+"GAMEOVER"+bcolors.ENDC)
+            for x in range(0,2):
+                b.setLedValue(15)
+                sleep(0.2)
+                b.setLedValue(0)
+                sleep(0.2)
+            b.setLedValue(5)
+            print ("Retry?")
+            print (bcolors.OKGREEN+"Green = Yes   "+bcolors.ENDC+bcolors.WARNING+"Yellow = No"+bcolors.ENDC)
+            break 
 
 
