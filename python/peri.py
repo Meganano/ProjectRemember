@@ -1,4 +1,5 @@
 from practicum import McuBoard,find_mcu_boards
+from time import sleep
 
 ####################################
 class McuWithPeriBoard(McuBoard):
@@ -35,12 +36,12 @@ class McuWithPeriBoard(McuBoard):
     ################################
     def getSwitchGreen(self):
         result = self.usb_read(request=3,length=1)
-        return result[0]==0
+        return result[0]==32
 
     ################################
     def getSwitchBlue(self):
         result = self.usb_read(request=4,length=1)
-        return result[0]==1
+        return result[0]==64
 
     ################################
 '''    def getLight(self):
